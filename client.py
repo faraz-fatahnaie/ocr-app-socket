@@ -18,5 +18,9 @@ def send_dict(ip, port, data_dict):
 
 
 if __name__ == "__main__":
-    data = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+    data = {"national_code": "۰۰۲۱۲۱۹۹۵۸",
+            "first_name": "سیدفراز",
+            "last_name": "فتحنائی اصل",
+            "birthdate": "۱۳۷۷-۰۴-۲۴",
+            "image": 'Base64ValueOfImageCard'}
     send_dict('192.168.1.34', 1234, data)
