@@ -1,4 +1,5 @@
 import binascii
+import datetime
 import socket
 import json
 import os
@@ -26,7 +27,11 @@ def start_server(ip, port, output_file):
             print(f"Connection from {client_address}")
 
             # Set a timeout for the connection to prevent blocking indefinitely
-            connection.settimeout(10.0)  # Timeout after 5 seconds
+            connection.settimeout(10.0)
+
+            current_datetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            connection.sendall(current_datetime.encode('utf-8'))
+            print(f"Sent current date and time to client: {current_datetime}")
 
             # Receive the data in small chunks and assemble it
             data = b""
@@ -103,4 +108,4 @@ if __name__ == "__main__":
     if output_dir:
         os.makedirs(output_dir, exist_ok=True)
 
-    start_server('192.168.1.34', 1234, output_file)
+    start_server('192.168.1.16', 1234, output_file)
